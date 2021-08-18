@@ -8,10 +8,9 @@ class SendEmail{
     $email->setSubject($subject);
     $email->addTo($to);
     $email->addContent("text/html",$content);
-     $url=$img_url;
 
 $att1 = new \SendGrid\Mail\Attachment();
-$att1->setContent(base64_encode(file_get_contents($url)));
+$att1->setContent(base64_encode(file_get_contents($img_url)));
 $att1->setType("image/jpeg");
 $att1->setFilename("photo.");
 $att1->setDisposition("attachment");
