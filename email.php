@@ -21,9 +21,12 @@ while($row=$stmt->fetch(PDO::FETCH_ASSOC))
     $json_url = $actual_url[0].'info.0.json'; //the json of the redirected url
     $json = file_get_contents($json_url); //getcontentoftheurl
     $data=json_decode($json);
+    $title=$data->title;
+    $imgurl=$data->img;
 
 for($i=0;$i<count($emails);$i++)
 { 
+    $to=$emails[$i];
     $message = '
               <html>
               <head>
@@ -34,13 +37,13 @@ for($i=0;$i<count($emails);$i++)
               <body>
               <h4>Hi,</h4><br>
               <p> HERE IS YOUR COMIC : </p>
-              <p> COMIC TITLE = '.$data->title.' </p>
-              <p> <img src='.$data->img.' alt='comedy'> </p>
+              <p> COMIC TITLE = '.$title.' </p>
+              <p> <img src='.$imgurl.' alt='comedy'> </p>
               <p> UNSUBSCRIBE HERE </p>
               </body>
               </html>
               ';
-              SendEmail::SendMail($emails[$i],$data->title,$message,$data->img);
+              SendEmail::SendMail($to,$title,$message,$imgurl);
 
   }
 ?>
