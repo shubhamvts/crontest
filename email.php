@@ -5,7 +5,7 @@
   <body>
     <?php
 //require 'sendingemail.php';
-require_once 'pdo.php';
+require_once 'config.php';
 $stmt=$pdo->query("SELECT * FROM users where subscribed='yes' ");
 $emails=array();
 while($row=$stmt->fetch(PDO::FETCH_ASSOC))
