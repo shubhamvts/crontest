@@ -1,8 +1,12 @@
 <?php
-$pdo=new mysqli("remotemysql.com","FDjM4OJk6J","8jAk1cFhRs","FDjM4OJk6J");
-if($pdo->connect_errno){
-  echo "failed";
-}else{
-  echo "succesful";
-}
+$db = parse_url(getenv("DATABASE_URL"));
+
+$pdo = new PDO("pgsql:" . sprintf(
+    "host=%s;port=%s;user=%s;password=%s;dbname=%s",
+    $db["host"],
+    $db["port"],
+    $db["user"],
+    $db["pass"],
+    ltrim($db["path"], "/")
+));
 ?>
