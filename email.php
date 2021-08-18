@@ -27,23 +27,9 @@ while($row=$stmt->fetch(PDO::FETCH_ASSOC))
 for($i=0;$i<count($emails);$i++)
 { 
     $to=$emails[$i];
-    $message = '
-              <html>
-              <head>
-              <meta charset="UTF-8">
-              <meta http-equiv="X-UA-Compatible" content="IE=edge">
-              <title>Document</title>
-              </head>
-              <body>
-              <h4>Hi,</h4><br>
-              <p> HERE IS YOUR COMIC : </p>
-              <p> COMIC TITLE = '.$title.' </p>
-              <p> <img src='.$imgurl.' alt='comedy'> </p>
-              <p> UNSUBSCRIBE HERE </p>
-              </body>
-              </html>
-              ';
-              SendEmail::SendMail($to,$title,$message,$imgurl);
+    $message = '';
+              
+              SendEmail::SendMail($to,$title,'hi',$imgurl);
 
   }
 ?>
