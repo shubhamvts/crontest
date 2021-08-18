@@ -1,3 +1,3 @@
 <?php
-$pdo = new mysqli('db_host', 'db_username', 'db_password', 'db_name');
+$pdo = new mysqli(getenv('db_host'), getenv('db_username'), getenv('db_password'), getenv('db_name'));
 ?>
