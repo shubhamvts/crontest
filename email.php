@@ -2,6 +2,7 @@
 require_once 'pdo.php';
 require 'vendor/autoload.php';
 $stmt=$pdo->query("SELECT * FROM users ");
+$i=0;
 $subs=array();
 $emails=array();
 while($row=$stmt->fetch(PDO::FETCH_ASSOC))
@@ -19,7 +20,7 @@ for($i=0;$i<count($emails);$i++)
     $json_url = $actual_url[0].'info.0.json'; //the json of the redirected url
     $json = file_get_contents($json_url); //getcontentoftheurl
     $data=json_decode($json); //convertingintojsonobject
-
+    echo $data->img;
     $message = '
               <html>
               <head>
@@ -41,16 +42,16 @@ for($i=0;$i<count($emails);$i++)
     $email->setSubject("5 MINUTES COMIC");
     $email->addTo($emails[i]);
     $email->addContent("text/html",$message);
-     $url=$data->img;
+     $url2=$data->img;
 
 $att1 = new \SendGrid\Mail\Attachment();
-$att1->setContent(base64_encode(file_get_contents($url)));
+$att1->setContent(base64_encode(file_get_contents($url2)));
 $att1->setType("image/jpeg");
 $att1->setFilename("random comic");
 $att1->setDisposition("attachment");
 $email->addAttachment( $att1 );
 
-    $sendgrid = new \SendGrid(getenv('api_key'));
+    $sendgrid = new \SendGrid(getenv('api_token'));
 
 
     try{
