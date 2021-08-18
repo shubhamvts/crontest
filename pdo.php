@@ -1,6 +1,3 @@
 <?php
-$dbhost = 'remotemysql.com:3306';
-         $dbuser = getenv(dbuser);
-         $dbpass = getenv(dbpass);
-         $pdo = mysqli_connect($dbhost, $dbuser, $dbpass);
+$pdo=new mysqli("remotemysql.com","FDjM4OJk6J","8jAk1cFhRs","FDjM4OJk6J");
 ?>
