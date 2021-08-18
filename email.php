@@ -1,6 +1,11 @@
-<?php
+<html>
+<head>
+  <title>email</title>
+</head>
+  <body>
+    <?php
+require_once 'sendingemail.php';
 require_once 'pdo.php';
-require 'vendor/autoload.php';
 $stmt=$pdo->query('SELECT * FROM users where subscribed="yes" ');
 $i=0;
 $emails=array();
@@ -18,33 +23,27 @@ while($row=$stmt->fetch(PDO::FETCH_ASSOC))
     $data=json_decode($json);
 
 for($i=0;$i<count($emails);$i++)
-{ //convertingintojsonobject
-    $message ='';
-
-              $email= new \SendGrid\Mail\Mail();
-    $email->setFrom("shubhamvats830@gmail.com","Shubham Vats");
-    $email->setSubject("5 MINUTES COMIC");
-    $email->addTo($emails[i]);
-    $email->addContent("text/html","hello my name is zuzie");
-     $url2=$data->img;
-
-$att1 = new \SendGrid\Mail\Attachment();
-$att1->setContent(base64_encode(file_get_contents($url2)));
-$att1->setType("image/jpeg");
-$att1->setFilename("random comic");
-$att1->setDisposition("attachment");
-$email->addAttachment( $att1 );
-
-    $sendgrid = new \SendGrid(getenv('api_token'));
-
-
-    try{
-      $response = $sendgrid->send($email);
-       return $response;
-    }catch(Exception $e){
-      echo 'Caught Exception : '.$e->getMessage()."\n";
-      return false;
-    }
+{ 
+    $message = '
+              <html>
+              <head>
+              <meta charset="UTF-8">
+              <meta http-equiv="X-UA-Compatible" content="IE=edge">
+              <title>Document</title>
+              </head>
+              <body>
+              <h4>Hi,</h4><br>
+              <p> HERE IS YOUR COMIC : </p>
+              <p> COMIC TITLE = '.$data->title.' </p>
+              <p> <img src='.$data->img.' alt='comedy'> </p>
+              <p> UNSUBSCRIBE HERE </p>
+              </body>
+              </html>
+              ';
+              SendEmail::SendMail($emails[$i],$data->title,$message,$data->img);
 
   }
 ?>
+<h1> you should receive an email </h1>
+</body>
+</html>
