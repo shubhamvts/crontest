@@ -1,40 +1,37 @@
 <?php
 require_once 'pdo.php';
 require 'vendor/autoload.php';
-$stmt=$pdo->query("SELECT * FROM users ");
+$stmt=$pdo->query('SELECT * FROM users where subscribed="yes" ');
 $i=0;
-$subs=array();
 $emails=array();
 while($row=$stmt->fetch(PDO::FETCH_ASSOC))
 {
   array_push($emails,$row['name']);
-  array_push($subs,$row['subscribed']);
 }
-for($i=0;$i<count($emails);$i++)
-{
-  if($subs[i]=="yes")
-  {
-    $url = "https://c.xkcd.com/random/comic/";
+
+
+    $url = 'https://c.xkcd.com/random/comic/';
     $headers = @get_headers($url,1);
     $actual_url=($headers['Location']); //redirected url from c.xkcd.com
     $json_url = $actual_url[0].'info.0.json'; //the json of the redirected url
     $json = file_get_contents($json_url); //getcontentoftheurl
-    $data=json_decode($json); //convertingintojsonobject
-    echo $data->img;
+    $data=json_decode($json);
+
+for($i=0;$i<count($emails);$i++)
+{ //convertingintojsonobject
     $message = '
               <html>
               <head>
               <title>Document</title>
               </head>
               <body>
-              <h4>Hi '.$emails[$i].',</h4><br>
+              <h4>Hi,</h4><br>
               <p> HERE IS YOUR COMIC : </p>
               <p> COMIC TITLE = '.$data->title.' </p>
-              <p> <img src='.$data->img.'>
+              <p> <img src='.$data->img.' alt='comic'> </p>
               <p> UNSUBSCRIBE HERE </p>
               </body>
               </html>
-
               ';
 
               $email= new \SendGrid\Mail\Mail();
@@ -63,7 +60,4 @@ $email->addAttachment( $att1 );
     }
 
   }
-}
-
-echo "check for email";
 ?>
