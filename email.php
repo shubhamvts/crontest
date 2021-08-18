@@ -25,7 +25,7 @@ while($row=$stmt->fetch(PDO::FETCH_ASSOC))
     $imgurl=$data->img;
 
 for($i=0;$i<count($emails);$i++)
-{ 
+{   echo $emails[$i];
     $to=$emails[$i];
     $message = '';
               
