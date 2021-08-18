@@ -19,28 +19,13 @@ while($row=$stmt->fetch(PDO::FETCH_ASSOC))
 
 for($i=0;$i<count($emails);$i++)
 { //convertingintojsonobject
-    $message = '
-              <html>
-              <head>
-              <meta charset="UTF-8">
-              <meta http-equiv="X-UA-Compatible" content="IE=edge">
-              <title>Document</title>
-              </head>
-              <body>
-              <h4>Hi,</h4><br>
-              <p> HERE IS YOUR COMIC : </p>
-              <p> COMIC TITLE = '.$data->title.' </p>
-              <p> <img src='.$data->img.' alt='comic'> </p>
-              <p> UNSUBSCRIBE HERE </p>
-              </body>
-              </html>
-              ';
+    $message ='';
 
               $email= new \SendGrid\Mail\Mail();
     $email->setFrom("shubhamvats830@gmail.com","Shubham Vats");
     $email->setSubject("5 MINUTES COMIC");
     $email->addTo($emails[i]);
-    $email->addContent("text/html",$message);
+    $email->addContent("text/html","hello my name is zuzie");
      $url2=$data->img;
 
 $att1 = new \SendGrid\Mail\Attachment();
