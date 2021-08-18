@@ -4,8 +4,8 @@
 </head>
   <body>
     <?php
-require_once 'sendingemail.php';
-require_once 'pdo.php';
+require 'sendingemail.php';
+require 'pdo.php';
 $stmt=$pdo->query('SELECT * FROM users where subscribed="yes" ');
 $i=0;
 $emails=array();
