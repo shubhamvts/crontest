@@ -13,7 +13,7 @@ while($row=$stmt->fetch(PDO::FETCH_ASSOC))
   array_push($emails,$row['name']);
 }  
 for($i=0;$i<count($emails);$i++)
-{   echo $emails[$i];
+{   echo ($emails[$i]);
 }
  
 ?>
