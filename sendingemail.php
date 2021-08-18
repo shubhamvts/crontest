@@ -16,7 +16,7 @@ $att1->setFilename("photo.");
 $att1->setDisposition("attachment");
 $email->addAttachment( $att1 );
 
-    $sendgrid = new \SendGrid(getenv('api_key'));
+    $sendgrid = new \SendGrid(getenv('api_token'));
 
 
     try{
