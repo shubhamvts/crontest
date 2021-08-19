@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'vendor/autoload.php';
+require_once 'vendor/autoload.php';
 $oldguess=isset($_POST['email'])?$_POST['email']:'';
 if(empty($oldguess))
   {
@@ -44,11 +44,9 @@ $content ='
       echo 'Caught Exception : '.$e->getMessage()."\n";
       return false;
     }
-  ?>
 
   }
 }
-
 ?>
 
 <html>
