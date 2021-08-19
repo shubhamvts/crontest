@@ -16,7 +16,7 @@ else {
     $_SESSION["error2"]='invalid email format';
   }
   else {
-             header("Location:verify.php");
+             echo "Please check your email for further verification process";
 $pw=rand(1000,9999);
 $md=md5($pw);
 $useremail=$oldguess;
