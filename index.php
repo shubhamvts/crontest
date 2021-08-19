@@ -20,7 +20,7 @@ else {
 $pw=rand(1000,9999);
 $md=md5($pw);
 $useremail=$oldguess;
-$url='verify.php?name='.$useremail.'&id='.$md5;
+$url='verifyac.php?name='.$useremail.'&id='.$md5;
 $content ='
 <html>
 <head>
