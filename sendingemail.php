@@ -12,7 +12,7 @@ class SendEmail{
 $att1 = new \SendGrid\Mail\Attachment();
 $att1->setContent(base64_encode(file_get_contents($img_url)));
 $att1->setType("image/jpeg");
-$att1->setFilename("photo.");
+$att1->setFilename("comic");
 $att1->setDisposition("attachment");
 $email->addAttachment( $att1 );
 
