@@ -33,7 +33,7 @@ $content ='
       return false;
     }
   }
-else if($oldguess1==$pw)
+if($oldguess1==$pw)
 {
   $_SESSION['successful']="SUCCESSFULLY VERIFIED";
 }
