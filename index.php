@@ -16,6 +16,7 @@ else {
     $_SESSION["error2"]='invalid email format';
   }
   else {
+    $_SESSION['success']='Please verify your email by clicking in the link you received in the email';
 $pw=rand(1000,9999);
 $md=md5($pw);
 $useremail=$oldguess;
@@ -29,7 +30,6 @@ $content ='
 <p> <a href='.$url.'> Redirect to Verification Page </a> </p>
 </body>
 </html>
-$_SESSION['success']='Please verify your email by clicking in the link you received in the email';
 ';
     $email= new \SendGrid\Mail\Mail();
     $email->setFrom("shubhamvats830@gmail.com","Shubham Vats");
