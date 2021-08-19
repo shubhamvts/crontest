@@ -1,5 +1,4 @@
 <?php
-require_once 'config.php';
 if(! isset($_GET['name']) || ! isset($_GET['id'])) die('unauthorized access');
 require_once 'config.php';
 $mail=$_GET['name'];
