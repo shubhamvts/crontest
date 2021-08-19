@@ -16,7 +16,6 @@ else {
     $_SESSION["error2"]='invalid email format';
   }
   else {
-    $_SESSION['success']='Please verify your email by clicking in the link you received in the email';
 $pw=rand(1000,9999);
 $md=md5($pw);
 $useremail=$oldguess;
@@ -44,7 +43,7 @@ $content ='
       echo 'Caught Exception : '.$e->getMessage()."\n";
       return false;
     }
-
+    header("Location:verify.php");
   }
 }
 ?>
@@ -82,10 +81,6 @@ $content ='
           echo "\n <p style='color:red'>".$_SESSION['error2']."</p";
           unset($_SESSION['error2']);
         }
-    if(isset($_SESSION['success'])) {
-      echo "\n <p style='color:green'>".$_SESSION['success']."</p>";
-      unset($_SESSION['success']);
-    }
       ?>
     </form>
     </div>
