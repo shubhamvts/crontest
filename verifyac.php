@@ -1,11 +1,12 @@
 <?php
 session_start();
 $pw='';
-if(isset($_POST['vc'])) $oldguess1=$_POST['vc']; else $oldguess1=''; 
+$oldguess1=isset($_POST['vc'])?$_POST['vc']:'';
 if(! isset($_GET['name'])) die('unauthorized access');
 require_once 'config.php';
 require 'vendor/autoload.php';
-if($_SESSION['status']==FALSE){
+if(!isset($_SESSION['status'])){
+    $_SESSION['status']='updated';
 $useremail=$_GET['name'];
 $pw=rand(1000,9999);
 $content ='
@@ -18,7 +19,6 @@ $content ='
 </body>
 </html>
 ';
-    $_SESSION['status']=TRUE;
     $email= new \SendGrid\Mail\Mail();
     $email->setFrom("shubhamvats830@gmail.com","Shubham Vats");
     $email->setSubject("Verification Email - 5 MINUTES COMICS BY XKCD");
