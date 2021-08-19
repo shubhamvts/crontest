@@ -2,7 +2,6 @@
 require_once 'config.php';
 if(! isset($_GET['name']) || ! isset($_GET['id'])) die('unauthorized access');
 require_once 'config.php';
-require 'vendor/autoload.php';
 $mail=$_GET['name'];
 $pw2=$_GET['id'];
 $stmt=$pdo->prepare('INSERT INTO users (name,password,subscription) VALUES (:name,:pass,:val)');
