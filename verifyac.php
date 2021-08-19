@@ -75,7 +75,7 @@ else{
         unset($_SESSION['error2']);
         $stmt=$pdo->prepare('INSERT INTO users (name, password, subscription) VALUES (:name,:pw,:val)');
         $stmt->execute(array(
-            ':name'=> $_POST['vc'],
+            ':name'=> $useremail,
             ':pw'=> $pw,
             ':val'=> 'no'));
       }
