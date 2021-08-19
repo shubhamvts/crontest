@@ -6,7 +6,7 @@ $pw2=$_GET['id'];
 $qry=$pdo->query('SELECT * FROM users');
 while($row=$qry->fetch(PDO::FETCH_ASSOC))
 {
-    if($mail==$row['name'] && row['subscription']=='yes')
+    if($mail==$row['name'] && $row['subscription']=='yes')
         $key='dont';
 }
 if($key!='dont')
