@@ -23,9 +23,8 @@ $imgurl=$data->img;
     
     echo ("\n".$title."\n".$imgurl."\n");
 for($i=0;$i<count($emails);$i++)
-{    echo ($emails[$i]."\n");
-}
-  /*$to=$emails[$i];
+{    //echo ($emails[$i]."\n");
+  $to=$emails[$i];
   $subject='YOUR RANDOM COMIC';
   $message= '
               <html>
@@ -35,8 +34,8 @@ for($i=0;$i<count($emails);$i++)
               <body>
               <h4>Hi,</h4><br>
               <p> HERE IS YOUR COMIC : </p>
-              <p> COMIC TITLE = '.$title.' </p>
-              <p> <img src='.$imgurl.' alt='comedy'> </p>
+              <p> COMIC TITLE = '' </p>
+              <p> </p>
               <p> UNSUBSCRIBE HERE </p>
               </body>
               </html>
@@ -66,7 +65,7 @@ $email->addAttachment( $att1 );
       return false;
     }
  
-} */
+} 
  
 ?>
 <h1> email sent</h1>
