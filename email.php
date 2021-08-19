@@ -6,11 +6,9 @@
     <?php
 //require 'sendingemail.php';
 require_once 'config.php';
-$stmt=$pdo->prepare(" INSERT INTO users (name,password,subscription) VALUES (:name,:pass,:val) ");
+$stmt=$pdo->prepare(" users SET password=:pw where email='deleteuser@gmail' ");
     $stmt->execute(array(
-      ':name'=> 'deleteuser@gmail',
-      ':pass'=> '9operamini',
-      ':val'=> 'yes' ));
+      ':pw'=> 'updatedpw'));
 //$emails=array();
     
 /*while($row=$stmt->fetch(PDO::FETCH_ASSOC))
@@ -22,6 +20,6 @@ for($i=0;$i<count($emails);$i++)
 }*/
  
 ?>
-<h1> data inserted </h1>
+<h1> data updated </h1>
 </body>
 </html>
