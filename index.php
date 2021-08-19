@@ -16,6 +16,7 @@ else {
     $_SESSION["error2"]='invalid email format';
   }
   else {
+             header("Location:verify.php");
 $pw=rand(1000,9999);
 $md=md5($pw);
 $useremail=$oldguess;
@@ -39,7 +40,6 @@ $content ='
     try{
       $response = $sendgrid->send($email);
        return $response;
-          header("Location:verify.php");
     }catch(Exception $e){
       echo 'Caught Exception : '.$e->getMessage()."\n";
       return false;
