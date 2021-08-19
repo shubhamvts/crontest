@@ -23,8 +23,10 @@ $imgurl=$data->img;
     
     echo ("\n".$title."\n".$imgurl."\n");
 for($i=0;$i<count($emails);$i++)
-{    //echo ($emails[$i]."\n");
-  $to=$emails[$i];
+{    echo ($emails[$i]."\n");
+     echo $title."\n";
+    echo $imgurl."\n";
+  /*$to=$emails[$i];
   $subject='YOUR RANDOM COMIC';
   $message= '
   <html>
@@ -36,7 +38,7 @@ for($i=0;$i<count($emails);$i++)
   </html>
   ';
   SendEmail::SendMail($to,$subject,$message,$imgurl);
-    }
+    }*/
  
 } 
  
