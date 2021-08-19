@@ -4,7 +4,7 @@
 </head>
   <body>
     <?php
-require 'vendor/autoload.php';
+require 'sendingemail.php';
 require_once 'config.php';
 $stmt=$pdo->query("SELECT * from users where subscription='yes' ");
 $emails=array();
@@ -27,42 +27,15 @@ for($i=0;$i<count($emails);$i++)
   $to=$emails[$i];
   $subject='YOUR RANDOM COMIC';
   $message= '
-              <html>
-              <head>
-              <title>Document</title>
-              </head>
-              <body>
-              <h4>Hi,</h4><br>
-              <p> HERE IS YOUR COMIC : </p>
-              <p> COMIC TITLE = '' </p>
-              <p> </p>
-              <p> UNSUBSCRIBE HERE </p>
-              </body>
-              </html>
-              ';
-  
-    $email= new \SendGrid\Mail\Mail();
-    $email->setFrom("shubhamvats830@gmail.com","Shubham Vats");
-    $email->setSubject($subject);
-    $email->addTo($to);
-    $email->addContent("text/html",$message);
-
-$att1 = new \SendGrid\Mail\Attachment();
-$att1->setContent(base64_encode(file_get_contents($imgurl)));
-$att1->setType("image/jpeg");
-$att1->setFilename("photo.");
-$att1->setDisposition("attachment");
-$email->addAttachment( $att1 );
-
-    $sendgrid = new \SendGrid(getenv('api_token'));
-
-
-    try{
-      $response = $sendgrid->send($email);
-       return $response;
-    }catch(Exception $e){
-      echo 'Caught Exception : '.$e->getMessage()."\n";
-      return false;
+  <html>
+  <head>
+  </head>
+  <body>
+  <p> hello </p>
+  </body>
+  </html>
+  ';
+  SendEmail::SendMail($to,$subject,$message,$imgurl);
     }
  
 } 
