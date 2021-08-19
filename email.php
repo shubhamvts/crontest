@@ -27,9 +27,10 @@ $imgurl=$data->img;
     
     //echo ("\n".$title."\n".$imgurl."\n");
 for($i=0;$i<count($emails);$i++)
-{    echo ($emails[$i]."\n");
+{  
   $to=$emails[$i];
   $subject='YOUR RANDOM COMIC';
+  $unsublink='https://phprtcamp.herokuapp.com/unsubscribe.php?email='.$emails[i];
   $message= '
   <html>
   <head>
@@ -39,7 +40,7 @@ for($i=0;$i<count($emails);$i++)
   <p> <strong> TITLE : </strong> '.$title.' </p>
   <p> <strong> RELEASE DATE : </strong> '.$date.' </p>
   <p> <img src='.$imgurl.'> </p>
-  <p> CLICK HERE TO UNSUBSCRIBE </p>
+  <p> <a href='.$unsublink.' style="color:white;background-color:red"> CLICK HERE TO UNSUBSCRIBE <a></p>
   </body>
   </html>
   ';
