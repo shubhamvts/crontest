@@ -15,7 +15,7 @@ else {
     $_SESSION["error2"]='invalid email format';
   }
   else {
-    header('Location:verifyac.php?name='.$oldguess);
+    header('Location:verifyac.php?name='.htmlentities($oldguess));
   }
 }
 
@@ -43,7 +43,7 @@ else {
       <p> <h4> <span style="color:green; font-family:Arial"> Welcome to 5 minute comics by XKCD </span> </h4> </p>
     <form method="post">
       <p> Enter your e-mail address to continue </p>
-      <p> <input type="text" name="email" value="<?=$oldguess?>"/> </p>
+      <p> <input type="text" name="email" value="<?=htmlentities($oldguess)?>"/> </p>
       <p> <input style="color:whiteSmoke; background-color:black" type="submit" value="NEXT"/> </p>
       <?php
         if(isset($_SESSION['error1'])) {
