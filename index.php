@@ -39,11 +39,11 @@ $content ='
     try{
       $response = $sendgrid->send($email);
        return $response;
+          header("Location:verify.php");
     }catch(Exception $e){
       echo 'Caught Exception : '.$e->getMessage()."\n";
       return false;
     }
-    header("Location:verify.php");
   }
 }
 ?>
