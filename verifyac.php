@@ -1,6 +1,7 @@
 <?php
 session_start();
 $pw='';
+if(isset($_POST['vc'])) $oldguess1=$_POST['vc']; else $oldguess1=''; 
 if(! isset($_GET['name'])) die('unauthorized access');
 require_once 'config.php';
 require 'vendor/autoload.php';
@@ -32,7 +33,7 @@ $content ='
       return false;
     }
   }
-if($_POST['vc']==$pw)
+else if($oldguess1==$pw)
 {
   $_SESSION['successful']="SUCCESSFULLY VERIFIED";
 }
@@ -62,10 +63,12 @@ else{
   <div class="cntr">
     <form method="post">
     <p> <span style="font-family:Arial"> Enter the 4-digit VERIFICAION CODE sent on your email id. </span> </p>
-    <p> <input type="text" name="vc" value=""/> </p>
+    <p> <input type="text" name="vc" value="<?=htmlentities($oldguess1)?>"/> </p>
     <p> <input style="color:whiteSmoke; background-color:black" type="submit" value="CONFIRM"/> </p>
-         <?php
-    if(!empty($_POST['vc'])){
+      </form>
+    </div>
+    <?php
+    if(!empty($oldguess1)){
       if(isset($_SESSION['error3'])) {
         echo "\n <p style='color:red'>".$_SESSION['error3']."</p";
         unset($_SESSION['error1']);
@@ -81,8 +84,5 @@ else{
       }
     }
     ?>
-      </form>
-    </div>
-    
 </body>
 </html>
