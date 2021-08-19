@@ -3,11 +3,20 @@ if(! isset($_GET['name']) || ! isset($_GET['id'])) die('unauthorized access');
 require_once 'config.php';
 $mail=$_GET['name'];
 $pw2=$_GET['id'];
+$qry=$pdo->query('SELECT * FROM users');
+while($row=$qry->fetch(PDO::FETCH_ASSOC))
+{
+    if($mail==$row['name'])
+        $key='dont';
+}
+if($key!='dont')
+{
 $stmt=$pdo->prepare('INSERT INTO users (name,password,subscription) VALUES (:name,:pass,:val)');
 $stmt->execute(array(
     ':name'=>$mail,
     ':pass'=>$pw2,
     ':val'=> 'yes' ));
+}
 ?>
 
 <html>
