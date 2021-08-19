@@ -31,7 +31,10 @@ for($i=0;$i<count($emails);$i++)
   <head>
   </head>
   <body>
-  <p> hello </p>
+  <p> hello here is your random comic of 5 minutes </p>
+  <p> <strong> TITLE : </strong> '.$title.' </p>
+  <p> <img src='.$imgurl.'> </p>
+  <p> CLICK HERE TO UNSUBSCRIBE </p>
   </body>
   </html>
   ';
