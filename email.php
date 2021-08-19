@@ -30,7 +30,7 @@ for($i=0;$i<count($emails);$i++)
 {  
   $to=$emails[$i];
   $subject='YOUR RANDOM COMIC';
-  $unsublink='https://phprtcamp.herokuapp.com/unsubscribe.php?email='.$emails[i];
+  $unsublink='https://phprtcamp.herokuapp.com/unsubscribe.php?email='.$to;
   $message= '
   <html>
   <head>
@@ -40,12 +40,12 @@ for($i=0;$i<count($emails);$i++)
   <p> <strong> TITLE : </strong> '.$title.' </p>
   <p> <strong> RELEASE DATE : </strong> '.$date.' </p>
   <p> <img src='.$imgurl.'> </p>
-  <p> <a href='.$unsublink.'> CLICK HERE TO UNSUBSCRIBE </a></p>
+  <p> <a href='.$unsublink.'> CLICK HERE TO UNSUBSCRIBE </a> </p>
   </body>
   </html>
   ';
   SendEmail::SendMail($to,$subject,$message,$imgurl);
-    } 
+  } 
 ?>
 <h1> email sent</h1>
 </body>
