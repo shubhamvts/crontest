@@ -20,6 +20,10 @@ $json = file_get_contents($json_url); //getcontentoftheurl
 $data=json_decode($json); //convertingintojsonobject
 $title=$data->title;
 $imgurl=$data->img;
+    $month=$data->month;
+    $day=$data->day;
+    $year=$data->year;
+    $date=$day."/".$month."/".$year;
     
     //echo ("\n".$title."\n".$imgurl."\n");
 for($i=0;$i<count($emails);$i++)
@@ -33,6 +37,7 @@ for($i=0;$i<count($emails);$i++)
   <body>
   <p> hello here is your random comic of 5 minutes </p>
   <p> <strong> TITLE : </strong> '.$title.' </p>
+  <p> <strong> RELEASE DATE : </strong> '.$date.' </p>
   <p> <img src='.$imgurl.'> </p>
   <p> CLICK HERE TO UNSUBSCRIBE </p>
   </body>
