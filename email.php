@@ -36,10 +36,7 @@ for($i=0;$i<count($emails);$i++)
   </html>
   ';
   SendEmail::SendMail($to,$subject,$message,$imgurl);
-    }
- 
-} 
- 
+    } 
 ?>
 <h1> email sent</h1>
 </body>
