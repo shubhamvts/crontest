@@ -40,7 +40,7 @@ for($i=0;$i<count($emails);$i++)
   <p> <strong> TITLE : </strong> '.$title.' </p>
   <p> <strong> RELEASE DATE : </strong> '.$date.' </p>
   <p> <img src='.$imgurl.'> </p>
-  <p style="background-color:red"> <a href='.$unsublink.'> CLICK HERE TO UNSUBSCRIBE </a></p>
+  <p> <a href='.$unsublink.'> CLICK HERE TO UNSUBSCRIBE </a></p>
   </body>
   </html>
   ';
