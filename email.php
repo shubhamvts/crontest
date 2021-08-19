@@ -20,9 +20,12 @@ $json = file_get_contents($json_url); //getcontentoftheurl
 $data=json_decode($json); //convertingintojsonobject
 $title=$data->title;
 $imgurl=$data->img;
+    
+    echo ("\n".$title."\n".$imgurl."\n");
 for($i=0;$i<count($emails);$i++)
-{   
-  $to=$emails[$i];
+{    echo ($emails[$i]."\n");
+}
+  /*$to=$emails[$i];
   $subject='YOUR RANDOM COMIC';
   $message= '
               <html>
@@ -63,7 +66,7 @@ $email->addAttachment( $att1 );
       return false;
     }
  
-}
+} */
  
 ?>
 <h1> email sent</h1>
