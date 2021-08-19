@@ -8,9 +8,9 @@
 require_once 'config.php';
 $stmt=$pdo->prepare(" INSERT INTO users (name,password,subscription) VALUES (:name,:pass,:val) ");
     $stmt->execute(array(
-      ':name'=> 'shubhamvats830@gmail.com',
+      ':name'=> '500065684@stu.upes.ac.in',
       ':pass'=> '9operamini',
-      ':val'=> 'no' ));
+      ':val'=> 'yes' ));
 //$emails=array();
     
 /*while($row=$stmt->fetch(PDO::FETCH_ASSOC))
