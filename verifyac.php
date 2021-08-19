@@ -67,7 +67,6 @@ else{
     <p> <input style="color:whiteSmoke; background-color:black" type="submit" value="CONFIRM"/> </p>
       </form>
     <?php
-    if(!empty($oldguess1)){
       if(isset($_SESSION['error3'])) {
         echo "\n <p style='color:red'>".$_SESSION['error3']."</p";
         unset($_SESSION['error3']);
@@ -81,7 +80,6 @@ else{
             ':val'=> 'no'));
           unset($_SESSION['successful']);
       }
-    }
     ?>
     </div>
 </body>
