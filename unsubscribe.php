@@ -1,6 +1,6 @@
 <?php
 require_once 'config.php';
-if(!isset($_GET['email']) die("Unauthorized Access");
+if(!isset($_GET['email'])) die("Unauthorized Access");
 $unmail=$_GET['email'];
 $stmt=$pdo->prepare("UPDATE users SET subscription=:val WHERE name=:unmail");
    $stmt->execute(array(
