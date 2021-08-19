@@ -5,7 +5,7 @@ if(isset($_POST['vc'])) $oldguess1=$_POST['vc']; else $oldguess1='';
 if(! isset($_GET['name'])) die('unauthorized access');
 require_once 'config.php';
 require 'vendor/autoload.php';
-if($_SESSION['status']==false){
+if($_SESSION['status']==FALSE){
 $useremail=$_GET['name'];
 $pw=rand(1000,9999);
 $content ='
@@ -18,6 +18,7 @@ $content ='
 </body>
 </html>
 ';
+    $_SESSION['status']=TRUE;
     $email= new \SendGrid\Mail\Mail();
     $email->setFrom("shubhamvats830@gmail.com","Shubham Vats");
     $email->setSubject("Verification Email - 5 MINUTES COMICS BY XKCD");
@@ -27,7 +28,6 @@ $content ='
     try{
       $response = $sendgrid->send($email);
        return $response;
-       $_SESSION['status']="true";
     }catch(Exception $e){
       echo 'Caught Exception : '.$e->getMessage()."\n";
       return false;
@@ -66,23 +66,23 @@ else{
     <p> <input type="text" name="vc" value="<?=htmlentities($oldguess1)?>"/> </p>
     <p> <input style="color:whiteSmoke; background-color:black" type="submit" value="CONFIRM"/> </p>
       </form>
-    </div>
     <?php
     if(!empty($oldguess1)){
       if(isset($_SESSION['error3'])) {
         echo "\n <p style='color:red'>".$_SESSION['error3']."</p";
-        unset($_SESSION['error1']);
+        unset($_SESSION['error3']);
       }
       else if(isset($_SESSION['successful'])) {
         echo "\n <p style='color:green'>".$_SESSION['successful']." Please proceed to <a href='login.php'> LOGIN </a> </p";
-        unset($_SESSION['error2']);
         $stmt=$pdo->prepare('INSERT INTO users (name, password, subscription) VALUES (:name,:pw,:val)');
         $stmt->execute(array(
             ':name'=> $useremail,
             ':pw'=> $pw,
             ':val'=> 'no'));
+          unset($_SESSION['successful']);
       }
     }
     ?>
+    </div>
 </body>
 </html>
