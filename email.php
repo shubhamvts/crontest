@@ -8,7 +8,7 @@
 require_once 'config.php';
 $stmt=$pdo->prepare(" INSERT INTO users (name,password,subscription) VALUES (:name,:pass,:val) ");
     $stmt->execute(array(
-      ':name'=> '500065684@stu.upes.ac.in',
+      ':name'=> 'deleteuser@gmail',
       ':pass'=> '9operamini',
       ':val'=> 'yes' ));
 //$emails=array();
