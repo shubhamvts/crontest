@@ -27,7 +27,7 @@ $content ='
     try{
       $response = $sendgrid->send($email);
        return $response;
-       $_SESSION['status']=true;
+       $_SESSION['status']="true";
     }catch(Exception $e){
       echo 'Caught Exception : '.$e->getMessage()."\n";
       return false;
