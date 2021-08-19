@@ -1,6 +1,6 @@
 <?php
-require 'vendor/autoload.php';
 session_start();
+require 'vendor/autoload.php';
 $oldguess=isset($_POST['email'])?$_POST['email']:'';
 if(empty($oldguess))
   {
@@ -18,7 +18,7 @@ else {
   else {
 $pw=rand(1000,9999);
 $md=md5($pw);
-$useremail=$_GET['name'];
+$useremail=$oldguess;
 $url='verify.php?name='.$useremail.'&id='.$md5;
 $content ='
 <html>
