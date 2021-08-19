@@ -1,4 +1,5 @@
 <?php
+require 'vendor/autoload.php';
 session_start();
 $oldguess=isset($_POST['email'])?$_POST['email']:'';
 if(empty($oldguess))
@@ -15,7 +16,36 @@ else {
     $_SESSION["error2"]='invalid email format';
   }
   else {
-    header('Location:verifyac.php?name='.htmlentities($oldguess));
+$pw=rand(1000,9999);
+$md=md5($pw);
+$useremail=$_GET['name'];
+$url='verify.php?name='.$useremail.'&id='.$md5;
+$content ='
+<html>
+<head>
+</head>
+<body>
+<p> CLICK BELOW TO VERIFY THIS ACCOUNT : </p>
+<p> <a href='.$url.'> Redirect to Verification Page </a> </p>
+</body>
+</html>
+$_SESSION['success']='Please verify your email by clicking in the link you received in the email';
+';
+    $email= new \SendGrid\Mail\Mail();
+    $email->setFrom("shubhamvats830@gmail.com","Shubham Vats");
+    $email->setSubject("Verification Email - 5 MINUTES COMICS BY XKCD");
+    $email->addTo($useremail);
+    $email->addContent("text/html",$content);
+    $sendgrid = new \SendGrid(getenv('api_token'));
+    try{
+      $response = $sendgrid->send($email);
+       return $response;
+    }catch(Exception $e){
+      echo 'Caught Exception : '.$e->getMessage()."\n";
+      return false;
+    }
+  ?>
+
   }
 }
 
@@ -54,6 +84,9 @@ else {
           echo "\n <p style='color:red'>".$_SESSION['error2']."</p";
           unset($_SESSION['error2']);
         }
+    if(isset($_SESSION['success'])) {
+      echo "\n <p style='color:green'>".$_SESSION['success']."</p>";
+      unset($_SESSION['success']);
       ?>
     </form>
     </div>
