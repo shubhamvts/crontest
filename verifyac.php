@@ -13,13 +13,13 @@ $content ='
 </head>
 <body>
 <p> Your Verification Code is : <strong> '.$pw.' </strong> </p>
-<p> <strong> PLEASE NOTE THAT YOU WILL USE THIS VERIFICATION CODE FOR LOGIN. AFTER LOGGIN IN, YOU CAN CHANGE YOUR PASSWORD. </strong> </p>
+<p> <strong> PLEASE NOTE THAT YOU WILL USE THIS VERIFICATION CODE FOR LOGIN. AFTER LOGGING IN, YOU CAN CHANGE YOUR PASSWORD. </strong> </p>
 </body>
 </html>
 ';
     $email= new \SendGrid\Mail\Mail();
     $email->setFrom("shubhamvats830@gmail.com","Shubham Vats");
-    $email->setSubject("Verification Email");
+    $email->setSubject("Verification Email - 5 MINUTES COMICS BY XKCD");
     $email->addTo($useremail);
     $email->addContent("text/html",$content);
     $sendgrid = new \SendGrid(getenv('api_token'));
@@ -60,7 +60,11 @@ else{
 </head>
 <body>
   <div class="cntr">
-    <?php
+    <form method="post">
+    <p> <span style="font-family:Arial"> Enter the 4-digit VERIFICAION CODE sent on your email id. </span> </p>
+    <p> <input type="text" name="vc" value=""/> </p>
+    <p> <input style="color:whiteSmoke; background-color:black" type="submit" value="CONFIRM"/> </p>
+         <?php
     if(!empty($_POST['vc'])){
       if(isset($_SESSION['error3'])) {
         echo "\n <p style='color:red'>".$_SESSION['error3']."</p";
@@ -77,9 +81,8 @@ else{
       }
     }
     ?>
-    <form method="post">
-    <p> <span style="font-family:Arial"> Enter the 4-digit VERIFICAION CODE sent on your email id. </span> </p>
-    <p> <input type="text" name="vc" value=""/> </p>
-    <p> <input style="color:whiteSmoke; background-color:black" type="submit" value="CONFIRM"/> </p>
+      </form>
+    </div>
+    
 </body>
 </html>
