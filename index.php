@@ -85,6 +85,7 @@ $content ='
     if(isset($_SESSION['success'])) {
       echo "\n <p style='color:green'>".$_SESSION['success']."</p>";
       unset($_SESSION['success']);
+    }
       ?>
     </form>
     </div>
