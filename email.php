@@ -6,7 +6,7 @@
     <?php
 //require 'sendingemail.php';
 require_once 'config.php';
-$stmt=$pdo->prepare(" users SET password=:pw where email='deleteuser@gmail' ");
+$stmt=$pdo->prepare("UPDATE users SET password=:pw where email='deleteuser@gmail' ");
     $stmt->execute(array(
       ':pw'=> 'updatedpw'));
 //$emails=array();
