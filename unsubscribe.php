@@ -4,7 +4,7 @@ if(!isset($_GET['email']) die("Unauthorized Access");
 $unmail=$_GET['email'];
 $stmt=$pdo->prepare("UPDATE users SET subscription=:val WHERE email=$unmail");
    $stmt->execute(array(
-     ':val'=>'no';
+     ':val'=>'no'));
      ?>
 <html>
   <head>
