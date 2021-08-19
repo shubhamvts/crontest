@@ -19,7 +19,7 @@ else {
 $pw=rand(1000,9999);
 $md=md5($pw);
 $useremail=$oldguess;
-$url='verifyac.php?name='.$useremail.'&id='.$md5;
+$url='https://phprtcamp.herokuapp.com/verifyac.php?name='.$useremail.'&id='.$md5;
 $content ='
 <html>
 <head>
